@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "alwaysStrict": true,
+        "forceConsistentCasingInFileNames": true,
+        "importHelpers": true,
+        "lib": ["ES2022"],
+        "module": "node16",
+        "moduleResolution": "node16",
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "noImplicitThis": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "outDir": "build",
+        "rootDir": "./src",
+        "sourceMap": true,
+        "strictNullChecks": false,
+        "target": "es2022"
+    },
+    "include": ["src/**/*", "jest.config.js"]
+}

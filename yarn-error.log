@@ -1,0 +1,40 @@
+Arguments: 
+  /Users/adilbasri/.nvm/versions/node/v18.12.1/bin/node /Users/adilbasri/.nvm/versions/node/v18.12.1/bin/yarn add -D @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-prettier eslint-plugin-jest jest prettier rimraf ts-jest typescript
+
+PATH: 
+  /Users/adilbasri/.rvm/gems/ruby-2.7.5/bin:/Users/adilbasri/.rvm/gems/ruby-2.7.5@global/bin:/Users/adilbasri/.rvm/rubies/ruby-2.7.5/bin:/Users/adilbasri/.nvm/versions/node/v18.12.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/adilbasri/.rvm/gems/ruby-2.7.5/bin:/Users/adilbasri/.rvm/gems/ruby-2.7.5@global/bin:/Users/adilbasri/.rvm/rubies/ruby-2.7.5/bin:/Users/adilbasri/.nvm/versions/node/v18.12.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/adilbasri/.rvm/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.12.1
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  SyntaxError: /Users/adilbasri/Documents/GitHub/oss/micro-express/package.json: Unexpected token } in JSON at position 200
+      at JSON.parse (<anonymous>)
+      at /Users/adilbasri/.nvm/versions/node/v18.12.1/lib/node_modules/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/Users/adilbasri/.nvm/versions/node/v18.12.1/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /Users/adilbasri/.nvm/versions/node/v18.12.1/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "micro-express",
+    "version": "1.0.0",
+    "author": "adevinwild",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/adevinwild/micro-express.git"
+    },
+    "license": "MIT",
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
