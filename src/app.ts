@@ -1,17 +1,17 @@
 import express from 'express';
-import cors from 'cors';
+import loaders from './loaders';
 
 (async () => {
     const app = express();
-    app.use(express.json());
-    app.use(express.urlencoded({ extended: true }));
-    app.use(cors());
 
-    app.get('/', (_req, res) => {
-        res.send('Hello World!');
-    });
+    try {
+        await loaders({ expressApp: app });
 
-    app.listen(3000, () => {
-        console.log('Server is listening on port 3000!');
-    });
+        app.listen(9000, () => {
+            console.log('Server is listening on port 3000!');
+        });
+    } catch (error) {
+        console.error(error);
+        process.exit(1);
+    }
 })();

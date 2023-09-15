@@ -8,17 +8,19 @@
     },
     "license": "MIT",
     "scripts": {
-        "build": "tsc -p tsconfig.json",
-        "dev": "nodemon src/app.ts",
+        "build": "rimraf build && tsc -p tsconfig.json",
+        "dev": "tsc-watch -p tsconfig.json --onSuccess \"nodemon ./build/app.js\"",
         "format": "eslint src/**/*.ts --fix",
         "lint": "eslint src/**/*.ts",
         "start": "yarn build && node build/app.js",
         "test": "jest"
     },
     "dependencies": {
+        "awilix": "^8.0.1",
         "cors": "^2.8.5",
         "dotenv": "^16.3.1",
-        "express": "^4.18.2"
+        "express": "^4.18.2",
+        "glob": "^10.3.4"
     },
     "devDependencies": {
         "@types/cors": "^2.8.14",
@@ -37,6 +39,7 @@
         "rimraf": "^5.0.1",
         "ts-jest": "^29.1.1",
         "ts-node": "^10.9.1",
+        "tsc-watch": "^6.0.4",
         "typescript": "^5.2.2"
     },
     "engines": {

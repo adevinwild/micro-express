@@ -19,5 +19,12 @@
         "strictNullChecks": false,
         "target": "es2022"
     },
+    "exclude": [
+        "node_modules",
+        "./src/**/__tests__",
+        "./src/**/__mocks__",
+        "./src/**/__fixtures__",
+        "./build/**/*"
+    ],
     "include": ["src/**/*", "__tests__/**/*", "jest.config.js"]
 }
