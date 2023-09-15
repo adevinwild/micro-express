@@ -1,8 +1,10 @@
-export default {
-    collectCoverageFrom: ['src/**/*.ts'],
+const testRegex = '(/__tests__/.*|(\\.|/)(test|spec))\\.[jt]s?$';
+
+module.exports = {
+    collectCoverageFrom: ['src/**/*.ts', '__tests__/**/*.ts'],
     coverageDirectory: 'coverage',
     preset: 'ts-jest/presets/default-esm',
     testEnvironment: 'node',
-    testRegex: '/src/.*\\.test\\.ts$',
+    testRegex,
     transform: { '^.+\\.[jt]s$': ['ts-jest', { useESM: true }] },
 };
