@@ -1,13 +1,12 @@
-import { AwilixContainer, asClass } from 'awilix';
+import { AwilixContainer, asClass, asValue } from 'awilix';
 import { sync } from 'glob';
 import path from 'path';
 
 type Options = {
     container: AwilixContainer;
 };
-
 export default async ({ container }: Options) => {
-    const repositoriesPath = '../repositories/*.js';
+    const repositoriesPath = path.join('..', 'repositories', '*.js');
     const pathFull = path.join(__dirname, repositoriesPath);
 
     const files = sync(pathFull, { cwd: __dirname });
@@ -19,7 +18,7 @@ export default async ({ container }: Options) => {
             const serviceName = `${name}Repository`;
 
             container.register({
-                [serviceName]: asClass(service),
+                [serviceName]: asValue(service),
             });
         }
     });
