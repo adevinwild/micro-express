@@ -1,32 +1,30 @@
 {
     "compilerOptions": {
-        "allowSyntheticDefaultImports": true,
-        "alwaysStrict": true,
-        "forceConsistentCasingInFileNames": true,
-        "importHelpers": true,
-        "lib": ["ES2022"],
-        "module": "node16",
-        "moduleResolution": "node16",
-        "noFallthroughCasesInSwitch": true,
-        "noImplicitAny": false,
-        "noImplicitReturns": true,
-        "noImplicitThis": false,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "outDir": "build",
-        "rootDir": "./src",
-        "sourceMap": true,
-        "strictNullChecks": false,
-        "target": "es2022",
+        "lib": ["es5", "es6", "es2019"],
+        "target": "es5",
+        "outDir": "./dist",
+        "esModuleInterop": true,
+        "declaration": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "noImplicitReturns": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "noImplicitThis": true,
+        "allowJs": true,
+        "skipLibCheck": true,
+        "downlevelIteration": true, // to use ES5 specific tooling
+        "resolveJsonModule": true
     },
+    "include": ["./src/**/*", "index.d.ts", "ormconfig.ts"],
     "exclude": [
-        "node_modules",
+        "./dist/**/*",
         "./src/**/__tests__",
         "./src/**/__mocks__",
         "./src/**/__fixtures__",
-        "./build/**/*"
-    ],
-    "include": ["src/**/*", "__tests__/**/*", "jest.config.js"]
+        "node_modules"
+    ]
 }
