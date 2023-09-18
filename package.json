@@ -15,12 +15,16 @@
         "lint": "eslint src/**/*.ts",
         "start": "node ./dist/app.js",
         "test": "jest",
-        "migration:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -d ./src/loaders/database.ts",
-        "migration:up": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run -d ./src/loaders/database.ts",
-        "migration:down": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:revert -d ./src/loaders/database.ts"
+        "migration:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -d ./src/config/ormconfig.ts",
+        "migration:up": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run -d ./src/config/ormconfig.ts",
+        "migration:down": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:revert -d ./src/config/ormconfig.ts"
+    },
+    "resolutions": {
+        "jackspeak": "2.1.1"
     },
     "dependencies": {
         "awilix": "^8.0.1",
+        "body-parser": "^1.20.2",
         "chalk": "^5.3.0",
         "cors": "^2.8.5",
         "dotenv": "^16.3.1",

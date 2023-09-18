@@ -1,4 +1,5 @@
-import { Express, json, urlencoded } from 'express';
+import { Express, urlencoded } from 'express';
+import bodyParser from 'body-parser';
 
 import routes from '../api';
 
@@ -6,7 +7,7 @@ type Options = {
     app: Express;
 };
 export default async ({ app }: Options) => {
-    app.use(json());
+    app.use(bodyParser.json());
     app.use(urlencoded({ extended: true }));
 
     app.get('/health', (_, res) => {

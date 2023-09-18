@@ -1,12 +1,12 @@
 import 'reflect-metadata';
 import dotenv from 'dotenv';
-import { createContainer, InjectionMode } from 'awilix';
+import { asValue, createContainer, InjectionMode } from 'awilix';
 import { Express } from 'express';
 
 import apiLoader from './api';
 import servicesLoader from './services';
 import repositoriesLoader from './repositories';
-import databaseLoader from './database';
+import databaseLoader, { dataSource } from './database';
 
 dotenv.config();
 
@@ -24,6 +24,10 @@ export default async ({ expressApp }: Options) => {
     console.log('Loading database...');
     await databaseLoader({ container });
     console.log('Database loaded');
+
+    container.register({
+        ['manager']: asValue(dataSource.manager),
+    });
 
     console.log('Loading repositories...');
     await repositoriesLoader({ container });
