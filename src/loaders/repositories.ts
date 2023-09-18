@@ -7,8 +7,8 @@ type Options = {
 };
 
 export default async ({ container }: Options) => {
-    const servicesPath = '../repositories/*.js';
-    const pathFull = path.join(__dirname, servicesPath);
+    const repositoriesPath = '../repositories/*.js';
+    const pathFull = path.join(__dirname, repositoriesPath);
 
     const files = sync(pathFull, { cwd: __dirname });
 

@@ -17,7 +17,9 @@
         "rootDir": "./src",
         "sourceMap": true,
         "strictNullChecks": false,
-        "target": "es2022"
+        "target": "es2022",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
     },
     "exclude": [
         "node_modules",

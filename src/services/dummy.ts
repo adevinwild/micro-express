@@ -1,8 +1,16 @@
-class DummyService {
-    constructor() {}
+import { Repository } from 'typeorm';
+import { Dummy } from '../models/dummy';
 
-    public retrieve(): string {
-        return 'Hello Dummy World!';
+type Container = {
+    dummyRepository: Repository<Dummy>;
+};
+
+class DummyService {
+    constructor(private readonly container: Container) {}
+
+    public async retrieve(): Promise<Dummy[]> {
+        const dummys = await this.container.dummyRepository.find();
+        return dummys;
     }
 }
 

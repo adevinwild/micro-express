@@ -13,14 +13,20 @@
         "format": "eslint src/**/*.ts --fix",
         "lint": "eslint src/**/*.ts",
         "start": "yarn build && node build/app.js",
-        "test": "jest"
+        "test": "jest",
+        "migration:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -d src/utils/config/ormconfig.ts",
+        "migration:up": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run -d src/utils/config/ormconfig.ts",
+        "migration:down": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:revert -d src/utils/config/ormconfig.ts"
     },
     "dependencies": {
         "awilix": "^8.0.1",
         "cors": "^2.8.5",
         "dotenv": "^16.3.1",
         "express": "^4.18.2",
-        "glob": "^10.3.4"
+        "glob": "^10.3.4",
+        "pg": "^8.11.3",
+        "reflect-metadata": "^0.1.13",
+        "typeorm": "^0.3.17"
     },
     "devDependencies": {
         "@types/cors": "^2.8.14",
@@ -45,5 +51,6 @@
     "engines": {
         "node": ">=18.0.0",
         "yarn": ">=1.22.0"
-    }
+    },
+    "packageManager": "yarn@3.6.3"
 }
