@@ -9,5 +9,3 @@ services:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: postgres
             POSTGRES_DB: micro-express
-volumes:
-    node_modules:
