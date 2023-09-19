@@ -12,8 +12,6 @@ class DummyService {
     public async list(): Promise<Dummy[]> {
         const dummys = await this.container.dummyRepository.find();
 
-        console.log('dummys', dummys);
-
         return dummys;
     }
 
@@ -29,6 +27,7 @@ class DummyService {
         const dummy = await this.container.dummyRepository.findOneOrFail({
             where: { id },
         });
+
         return dummy;
     }
 }
