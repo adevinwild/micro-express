@@ -1,7 +1,7 @@
 name: micro-express
 services:
     postgres:
-        image: postgres:10.4
+        image: postgres
         ports:
             - '5432:5432'
         environment:
