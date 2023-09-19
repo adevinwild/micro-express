@@ -11,7 +11,7 @@
     "scripts": {
         "build": "rimraf dist && tsc --build",
         "dev": "tsc-watch -p tsconfig.json --onSuccess \"nodemon ./dist/app.js\"",
-        "format": "eslint src/**/*.ts --fix",
+        "format": "prettier --write \"src/**/*.ts\"",
         "lint": "eslint src/**/*.ts",
         "start": "node ./dist/app.js",
         "test": "jest",

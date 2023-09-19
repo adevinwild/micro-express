@@ -1,12 +1,18 @@
 import 'reflect-metadata';
 import dotenv from 'dotenv';
-import { asValue, createContainer, InjectionMode } from 'awilix';
+import {
+    asValue,
+    AwilixContainer,
+    createContainer,
+    InjectionMode,
+} from 'awilix';
 import { Express } from 'express';
 
 import apiLoader from './api';
 import servicesLoader from './services';
 import repositoriesLoader from './repositories';
 import databaseLoader, { dataSource } from './database';
+import loggerLoader from './logger';
 
 dotenv.config();
 
@@ -14,28 +20,42 @@ type Options = {
     expressApp: Express;
 };
 
-export default async ({ expressApp }: Options) => {
-    console.log('Creating DI container...');
+export default async ({
+    expressApp,
+}: Options): Promise<{ container: AwilixContainer }> => {
     const container = createContainer({
         injectionMode: InjectionMode.PROXY,
     });
-    console.log('DI container created');
 
-    console.log('Loading database...');
-    await databaseLoader();
-    console.log('Database loaded');
+    const logger = loggerLoader({ container });
+
+    const databaseActivity = logger.progress('Loading database...');
+    await databaseLoader().catch((err) => {
+        databaseActivity.fail('Database failed to load');
+        logger.error(err);
+        process.exit(1);
+    });
+    databaseActivity.succeed('Database loaded');
 
     container.register({
         ['manager']: asValue(dataSource.manager),
     });
 
-    console.log('Loading repositories...');
-    await repositoriesLoader({ container });
-    console.log('Repositories loaded');
+    const repositoriesActivity = logger.progress('Loading repositories...');
+    await repositoriesLoader({ container }).catch((err) => {
+        repositoriesActivity.fail('Repositories failed to load');
+        logger.error(err);
+        process.exit(1);
+    });
+    repositoriesActivity.succeed('Repositories loaded');
 
-    console.log('Loading services...');
-    await servicesLoader({ container });
-    console.log('Services loaded');
+    const servicesActivity = logger.progress('Loading services...');
+    await servicesLoader({ container }).catch((err) => {
+        servicesActivity.fail('Services failed to load');
+        logger.error(err);
+        process.exit(1);
+    });
+    servicesActivity.succeed('Services loaded');
 
     /**
      * Now that all is registered in the container
@@ -46,5 +66,17 @@ export default async ({ expressApp }: Options) => {
         next();
     });
 
-    await apiLoader({ app: expressApp });
+    const apiActivity = logger.progress('Loading API...');
+    await apiLoader({
+        app: expressApp,
+    }).catch((err) => {
+        apiActivity.fail('API failed to load');
+        logger.error(err);
+        process.exit(1);
+    });
+    apiActivity.succeed('API loaded');
+
+    return {
+        container,
+    };
 };

@@ -5,7 +5,7 @@ import retrieveDummy from './retrieve-dummy';
 
 const route = Router();
 
-export default (app) => {
+export default (app: Router): Router => {
     app.use('/dummy', route);
 
     route.get('/', listDummies);

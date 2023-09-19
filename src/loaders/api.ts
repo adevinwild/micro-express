@@ -6,7 +6,7 @@ import routes from '../api';
 type Options = {
     app: Express;
 };
-export default async ({ app }: Options) => {
+export default async ({ app }: Options): Promise<Express> => {
     app.use(bodyParser.json());
     app.use(urlencoded({ extended: true }));
 

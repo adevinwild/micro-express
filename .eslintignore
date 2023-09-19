@@ -1,4 +1,5 @@
 dist
 **/*.test.js
 **/*.test.ts
+**/*.spec.ts
 jest.config.js

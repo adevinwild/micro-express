@@ -1,14 +1,18 @@
 import express from 'express';
 import loaders from './loaders';
+import { MicroLogger } from './loaders/logger';
 
 (async () => {
     const app = express();
 
     try {
-        await loaders({ expressApp: app });
+        const { container } = await loaders({ expressApp: app });
+        const logger: MicroLogger = container.resolve('logger');
 
-        app.listen(9000, () => {
-            console.log('Server is listening on port 3000!');
+        const PORT = 9000;
+
+        app.listen(PORT, () => {
+            logger.info(`µExpress | Listening on port ${PORT}`);
         });
     } catch (error) {
         console.error(error);

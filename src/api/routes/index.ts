@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import dummyRoutes from './dummy';
 
-export default (app) => {
+export default (app: Router): Router => {
     const route = Router();
     app.use('/api', route);
 

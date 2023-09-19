@@ -7,7 +7,7 @@ dotenv.config();
 
 export let dataSource: DataSource;
 
-export default async () => {
+export default async (): Promise<DataSource> => {
     dataSource = new DataSource(dataSourceOptions);
 
     await dataSource.initialize().catch(handlePostgresDatabaseError);

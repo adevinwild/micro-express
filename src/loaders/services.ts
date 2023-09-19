@@ -6,7 +6,7 @@ type Options = {
     container: AwilixContainer;
 };
 
-export default async ({ container }: Options) => {
+export default async ({ container }: Options): Promise<void> => {
     const servicesPath = path.join('..', 'services', '*.js');
     const pathFull = path.join(__dirname, servicesPath);
 
