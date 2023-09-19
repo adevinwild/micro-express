@@ -22,7 +22,7 @@ export default async ({ expressApp }: Options) => {
     console.log('DI container created');
 
     console.log('Loading database...');
-    await databaseLoader({ container });
+    await databaseLoader();
     console.log('Database loaded');
 
     container.register({
