@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { DataSource } from 'typeorm';
-import dataSourceOptions from '../config/ormconfig';
+import dataSourceOptions from '../.internals/ormconfig';
 import { handlePostgresDatabaseError } from '../utils/database';
 
 dotenv.config();
