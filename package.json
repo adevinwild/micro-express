@@ -15,9 +15,9 @@
         "lint": "eslint src/**/*.ts",
         "start": "node ./dist/app.js",
         "test": "jest",
-        "migration:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -d ./src/config/datasource.ts",
-        "migration:up": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run -d ./src/config/datasource.ts",
-        "migration:down": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:revert -d ./src/config/datasource.ts"
+        "migration:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -d ./src/.internals/datasource.ts",
+        "migration:up": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run -d ./src/.internals/datasource.ts",
+        "migration:down": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:revert -d ./src/.internals/datasource.ts"
     },
     "resolutions": {
         "jackspeak": "2.1.1"
